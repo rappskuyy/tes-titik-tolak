@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { ArrowRight, Play } from "lucide-react";
+
 const Hero = () => {
   return (
     <section className="py-16 md:py-24 bg-background">
@@ -17,17 +20,19 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
-              <a
-                href="#"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-md text-sm font-medium hover:opacity-90 transition"
+              <Link
+                to="/payment?plan=pro"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-md text-sm font-medium hover:opacity-90 transition"
               >
                 Mulai Sekarang
-              </a>
+                <ArrowRight size={16} />
+              </Link>
               <a
-                href="#"
-                className="bg-secondary text-secondary-foreground px-6 py-3 rounded-full text-sm font-medium hover:opacity-90 transition"
+                href="#produk"
+                className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-full text-sm font-medium hover:opacity-90 transition"
               >
-                Pelajari Lebih Lanjut
+                <Play size={14} />
+                Lihat Program
               </a>
             </div>
 

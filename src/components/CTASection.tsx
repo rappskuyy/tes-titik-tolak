@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const plans = [
   {
@@ -9,6 +10,7 @@ const plans = [
     features: ["Akses 50+ kursus dasar", "Sertifikat digital", "Forum komunitas", "Email support"],
     cta: "Pilih Basic",
     highlighted: false,
+    planKey: "basic",
   },
   {
     name: "Pro",
@@ -18,6 +20,7 @@ const plans = [
     features: ["Akses semua kursus premium", "Mentoring 1-on-1 bulanan", "Sertifikat profesional", "Priority support 24/7", "Akses tools eksklusif", "Networking events"],
     cta: "Pilih Pro",
     highlighted: true,
+    planKey: "pro",
   },
   {
     name: "Enterprise",
@@ -27,6 +30,7 @@ const plans = [
     features: ["Unlimited users", "Custom curriculum", "Dedicated account manager", "Advanced analytics", "API integration", "SLA guarantee"],
     cta: "Hubungi Kami",
     highlighted: false,
+    planKey: "enterprise",
   },
 ];
 
@@ -50,11 +54,10 @@ const CTASection = () => {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-2xl p-8 flex flex-col transition-all duration-300 hover:scale-[1.02] ${
-                plan.highlighted
-                  ? "bg-card border-2 border-primary shadow-lg scale-[1.02]"
-                  : "bg-card border border-border shadow-sm"
-              }`}
+              className={`rounded-2xl p-8 flex flex-col transition-all duration-300 hover:scale-[1.02] ${plan.highlighted
+                ? "bg-card border-2 border-primary shadow-lg scale-[1.02]"
+                : "bg-card border border-border shadow-sm"
+                }`}
             >
               <div className="mb-6">
                 <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
@@ -75,16 +78,15 @@ const CTASection = () => {
                 ))}
               </ul>
 
-              <a
-                href="#"
-                className={`block text-center py-3 rounded-full text-sm font-medium transition ${
-                  plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:opacity-90"
-                    : "bg-muted text-foreground border border-border hover:bg-muted/80"
-                }`}
+              <Link
+                to={`/payment?plan=${plan.planKey}`}
+                className={`block text-center py-3 rounded-full text-sm font-medium transition ${plan.highlighted
+                  ? "bg-primary text-primary-foreground hover:opacity-90"
+                  : "bg-muted text-foreground border border-border hover:bg-muted/80"
+                  }`}
               >
                 {plan.cta}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
